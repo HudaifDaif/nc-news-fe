@@ -2,31 +2,15 @@ import { useEffect, useState } from "react";
 import { getArticles } from "../../../utils/api.articles";
 import ArticleCard from "../ArticleCard/ArticleCard";
 
-const ArticleList = () => {
-	const [articlesData, setArticlesData] = useState({});
-	const [isLoading, setIsLoading] = useState(true);
-	const [page, setPage] = useState(1);
-
+const ArticleList = ({ articles, pages, currentPage, setCurrentPage }) => {
 	const handlePageChange = (newPage) => {
-		setPage(newPage);
+		setCurrentPage(newPage);
 	};
 
-	useEffect(() => {
-		setIsLoading(true);
-		getArticles(page)
-			.then((data) => {
-				const { articles, pages } = data;
-				setArticlesData({ articles, pages });
-			})
-			.finally(() => setIsLoading(false));
-	}, [page]);
-
-	return isLoading ? (
-		<h2>Loading...</h2>
-	) : (
+	return (
 		<>
 			<section>
-				{articlesData.articles.map((article) => {
+				{articles.map((article) => {
 					return (
 						<ArticleCard
 							key={`article.${article.article_id}`}
@@ -36,16 +20,16 @@ const ArticleList = () => {
 				})}
 			</section>
 			<div>
-				page {page} of {articlesData.pages}
+				page {currentPage} of {pages}
 			</div>
 			<nav>
-				{page > 1 && (
-					<button onClick={() => handlePageChange(page - 1)}>
+				{currentPage > 1 && (
+					<button onClick={() => handlePageChange(currentPage - 1)}>
 						previous
 					</button>
 				)}
-				{page < articlesData.pages && (
-					<button onClick={() => handlePageChange(page + 1)}>
+				{currentPage < pages && (
+					<button onClick={() => handlePageChange(currentPage + 1)}>
 						next
 					</button>
 				)}
