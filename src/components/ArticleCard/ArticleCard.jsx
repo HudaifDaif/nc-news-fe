@@ -1,4 +1,4 @@
-import "./ArticleCard.css"
+import "./ArticleCard.css";
 
 const ArticleCard = ({ article }) => {
 	return (

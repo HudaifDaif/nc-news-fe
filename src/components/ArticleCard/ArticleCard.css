@@ -1,7 +1,7 @@
 .article-card {
 	width: 80vw;
 	margin-block: 10px;
-    padding: 10px
+	padding: 10px;
 }
 .article-card > img {
 	max-width: 100%;
