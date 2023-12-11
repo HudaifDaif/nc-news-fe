@@ -1,0 +1,11 @@
+.article-card {
+	width: 80vw;
+	margin-block: 10px;
+	padding: 10px;
+}
+.article-card > img {
+	max-width: 100%;
+	max-height: 25svh;
+	height: 75%;
+	border-radius: 1em;
+}
