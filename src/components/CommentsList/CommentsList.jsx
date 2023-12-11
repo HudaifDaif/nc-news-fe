@@ -1,10 +1,10 @@
 import CommentCard from "../CommentCard/CommentCard";
 
 const CommentsList = ({ comments, pages, currentPage, setCurrentPage }) => {
-    	const handlePageChange = (newPage) => {
-			setCurrentPage(newPage);
-        };
-    
+	const handlePageChange = (newPage) => {
+		setCurrentPage(newPage);
+	};
+
 	return (
 		<>
 			<section>

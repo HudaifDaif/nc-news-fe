@@ -13,7 +13,5 @@ export const getArticles = (page) => {
 };
 
 export const getArticleById = (id) => {
-	return axios
-		.get(`/articles/${id}`)
-		.then(({ data }) => data);
+	return axios.get(`/articles/${id}`).then(({ data }) => data);
 };
