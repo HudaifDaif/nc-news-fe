@@ -16,7 +16,11 @@ const ArticleBody = ({ articleContents }) => {
 			<h2>{title}</h2>
 			<section className="article-contents">
 				<article>
-				<img src={article_img_url} alt="" className="article-image" />
+					<img
+						src={article_img_url}
+						alt=""
+						className="article-image"
+					/>
 					<p>{body}</p>
 					<p>Topic: {topic}</p>
 					<p>Author: {author}</p>
