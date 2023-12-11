@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { getArticles } from "../../../utils/api.articles";
 import ArticleCard from "../ArticleCard/ArticleCard";
 
 const ArticleList = ({ articles, pages, currentPage, setCurrentPage }) => {

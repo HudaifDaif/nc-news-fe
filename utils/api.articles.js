@@ -13,3 +13,11 @@ export const getArticles = (page) => {
 			return data;
 		});
 };
+
+export const getArticleById = (id) => {
+	return axios
+		.get(`/articles/${id}`)
+		.then(({ data }) => {
+			return data;
+		});
+};
