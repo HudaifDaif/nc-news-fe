@@ -15,3 +15,11 @@ export const getArticles = (page) => {
 export const getArticleById = (id) => {
 	return axios.get(`/articles/${id}`).then(({ data }) => data);
 };
+
+export const patchArticleById = (id, opinion) => {
+	return axios
+		.patch(`/articles/${id}`, {
+			inc_votes: opinion,
+		})
+		.then(({ data }) => data);
+};
