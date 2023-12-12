@@ -9,8 +9,5 @@ export const getCommentsByArticleId = (article_id, page) => {
 				p: page,
 			},
 		})
-		.then(({ data }) => {
-			console.log(data);
-			return data;
-		});
+		.then(({ data }) => data);
 };

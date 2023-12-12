@@ -1,8 +1,10 @@
 .comment-contents {
 	text-align: left;
 	min-width: 20vw;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-	padding: 10px;
-	border-radius: 1rem;
+	box-shadow: inset  0px 0px 10px black;
+	padding: 20px;
+	border-radius: 0.5rem;
 	margin: 2vw;
+	color: rgb(36, 36, 36);
+	background-color: rgb(227, 227, 227);
 }

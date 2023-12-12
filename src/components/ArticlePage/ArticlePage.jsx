@@ -7,7 +7,10 @@ import CommentsList from "../CommentsList/CommentsList";
 import { getCommentsByArticleId } from "../../../utils/api.comments";
 
 const ArticlePage = () => {
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState({
+		article: true,
+		comments: true,
+	});
 	const [articleContents, setArticleContents] = useState({});
 	const [commentsData, setCommentsData] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -15,7 +18,6 @@ const ArticlePage = () => {
 	const { article_id } = useParams();
 
 	useEffect(() => {
-		setIsLoading(true);
 		getArticleById(article_id)
 			.then((data) => {
 				const { article } = data;
@@ -24,12 +26,18 @@ const ArticlePage = () => {
 			})
 			.then(({ comments, pages }) => {
 				setCommentsData({ comments, pages });
+				setIsLoading(false);
 			})
 			.finally(() => setIsLoading(false));
 	}, [currentPage]);
 
-	return isLoading ? (
+	return isLoading.article ? (
 		<h2>Loading...</h2>
+	) : isLoading.comments ? (
+		<>
+			<ArticleBody articleContents={articleContents} />
+			<h2>Loading...</h2>
+		</>
 	) : (
 		<>
 			<ArticleBody articleContents={articleContents} />

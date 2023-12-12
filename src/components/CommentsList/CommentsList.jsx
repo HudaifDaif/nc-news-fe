@@ -1,13 +1,15 @@
+import { scroll } from "../../../utils/window";
 import CommentCard from "../CommentCard/CommentCard";
 
 const CommentsList = ({ comments, pages, currentPage, setCurrentPage }) => {
 	const handlePageChange = (newPage) => {
+		scroll("#article-comments");
 		setCurrentPage(newPage);
 	};
 
 	return (
 		<>
-			<section>
+			<section id="article-comments">
 				{comments.map((comment) => {
 					return (
 						<CommentCard

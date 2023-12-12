@@ -9,7 +9,7 @@ const CommentCard = ({ comment }) => {
 		<article className="comment-contents">
 			<p>{body}</p>
 			<p>Author: {author} </p>
-			<p>{formattedDate}</p>
+			<p>Posted: {formattedDate}</p>
 			<p>Votes: {votes}</p>
 			<button>+</button>
 			<button>-</button>
