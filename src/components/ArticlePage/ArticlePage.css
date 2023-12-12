@@ -1,0 +1,15 @@
+.article-image {
+	max-width: 75%;
+	max-height: 50svh;
+	border-radius: 1em;
+	float: right;
+	margin: 10px 0;
+}
+
+.article-contents {
+	text-align: left;
+	min-width: 20vw;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+	padding: 10px;
+	border-radius: 1rem;
+}

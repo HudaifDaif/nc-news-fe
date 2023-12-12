@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
 	return (
 		<header>
-			<h1>Header</h1>
+			<Link to="/">
+				<h1>Header (Home)</h1>
+			</Link>
 		</header>
 	);
 };
