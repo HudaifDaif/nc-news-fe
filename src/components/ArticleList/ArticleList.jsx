@@ -1,13 +1,15 @@
+import { scroll } from "../../../utils/window";
 import ArticleCard from "../ArticleCard/ArticleCard";
 
 const ArticleList = ({ articles, pages, currentPage, setCurrentPage }) => {
 	const handlePageChange = (newPage) => {
 		setCurrentPage(newPage);
+		scroll("#article-list")
 	};
 
 	return (
 		<>
-			<section>
+			<section id="article-list">
 				{articles.map((article) => {
 					return (
 						<ArticleCard

@@ -6,8 +6,11 @@ import Header from "./components/Header/Header";
 import Articles from "./components/Articles/Articles";
 import ToolBar from "./components/ToolBar/ToolBar";
 import ArticlePage from "./components/ArticlePage/ArticlePage";
+import { useState } from "react";
 
 function App() {
+	const [articleQueries, setArticleQueries] = useState({});
+
 	return (
 		<>
 			<Header />

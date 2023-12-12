@@ -9,15 +9,9 @@ export const getArticles = (page) => {
 				p: page,
 			},
 		})
-		.then(({ data }) => {
-			return data;
-		});
+		.then(({ data }) => data);
 };
 
 export const getArticleById = (id) => {
-	return axios
-		.get(`/articles/${id}`)
-		.then(({ data }) => {
-			return data;
-		});
+	return axios.get(`/articles/${id}`).then(({ data }) => data);
 };

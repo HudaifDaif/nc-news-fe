@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ArticleList from "../ArtileList/ArticleList";
+import ArticleList from "../ArticleList/ArticleList";
 import { getArticles } from "../../../utils/api.articles";
 
 const Articles = () => {
