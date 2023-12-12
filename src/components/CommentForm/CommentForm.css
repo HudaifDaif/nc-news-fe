@@ -1,0 +1,16 @@
+.comment-form {
+	clear: both;
+	text-align: left;
+	min-width: 20vw;
+	box-shadow: inset 0px 0px 10px black;
+	padding: 10px;
+	border-radius: 0.5rem;
+	margin: 1vw;
+	color: rgb(36, 36, 36);
+	background-color: rgb(227, 227, 227);
+}
+
+textarea {
+	width: 99%;
+	height: 20em;
+}
