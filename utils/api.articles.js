@@ -9,15 +9,17 @@ export const getArticles = (page) => {
 				p: page,
 			},
 		})
-		.then(({ data }) => {
-			return data;
-		});
+		.then(({ data }) => data);
 };
 
 export const getArticleById = (id) => {
+	return axios.get(`/articles/${id}`).then(({ data }) => data);
+};
+
+export const patchArticleById = (id, opinion) => {
 	return axios
-		.get(`/articles/${id}`)
-		.then(({ data }) => {
-			return data;
-		});
+		.patch(`/articles/${id}`, {
+			inc_votes: opinion,
+		})
+		.then(({ data }) => data);
 };
