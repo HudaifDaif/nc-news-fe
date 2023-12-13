@@ -14,10 +14,11 @@ const Articles = () => {
 		getArticles(currentPage, topic)
 			.then((data) => {
 				const { articles, pages } = data;
+				console.log(data);
 				setArticlesData({ articles, pages });
 			})
 			.finally(() => setIsLoading(false));
-	}, [currentPage, topic]);
+	}, [currentPage , topic]);
 
 	return (
 		<main>

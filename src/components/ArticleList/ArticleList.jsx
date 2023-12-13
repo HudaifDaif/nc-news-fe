@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { scroll } from "../../../utils/window";
 import ArticleCard from "../ArticleCard/ArticleCard";
 
