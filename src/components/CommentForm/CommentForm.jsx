@@ -34,6 +34,7 @@ const CommentForm = ({
 				const { body, author, votes, created_at, comment_id } = comment;
 				setCommentsData((current) => {
 					const { comments, pages } = current;
+					const copiedComments = [...comments].slice(1);
 					return {
 						comments: [
 							{
@@ -44,7 +45,7 @@ const CommentForm = ({
 								article_id,
 								comment_id,
 							},
-							...comments,
+							...copiedComments,
 						],
 						pages,
 					};
@@ -54,6 +55,25 @@ const CommentForm = ({
 				handleToggleComment();
 				setCommentError(true);
 			});
+
+		setCommentsData((current) => {
+			const { comments, pages } = current;
+			return {
+				comments: [
+					{
+						body: input,
+						author: username,
+						created_at: Date.now(),
+						votes: 0,
+						article_id,
+						comment_id: Date.now(),
+					},
+					...comments,
+				],
+				pages,
+			};
+		});
+
 		handleToggleComment();
 	};
 
