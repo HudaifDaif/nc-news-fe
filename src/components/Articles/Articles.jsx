@@ -2,20 +2,20 @@ import { useEffect, useState } from "react";
 import ArticleList from "../ArticleList/ArticleList";
 import { getArticles } from "../../../utils/api.articles";
 
-const Articles = () => {
+const Articles = ({ articleQueries }) => {
 	const [articlesData, setArticlesData] = useState({});
 	const [isLoading, setIsLoading] = useState(true);
 	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
 		setIsLoading(true);
-		getArticles(currentPage)
+		getArticles(currentPage, articleQueries)
 			.then((data) => {
 				const { articles, pages } = data;
 				setArticlesData({ articles, pages });
 			})
 			.finally(() => setIsLoading(false));
-	}, [currentPage]);
+	}, [articleQueries, currentPage]);
 
 	return (
 		<main>

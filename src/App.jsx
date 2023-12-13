@@ -19,8 +19,8 @@ function App() {
 					path="/"
 					element={
 						<>
-							<ToolBar />
-							<Articles />
+							<ToolBar setArticleQueries={setArticleQueries} />
+							<Articles articleQueries={articleQueries} />
 						</>
 					}
 				></Route>
