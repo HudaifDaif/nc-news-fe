@@ -1,0 +1,13 @@
+.toolbar {
+	width: 80vw;
+	max-height: max-content;
+	border-radius: 0.5em;
+	margin: 20px auto;
+    padding: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.toolbar > * {
+    width: 50%;
+    margin: 5px auto;
+}
