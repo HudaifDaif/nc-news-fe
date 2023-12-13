@@ -14,7 +14,6 @@ const CommentForm = ({
 	const { article_id } = useParams();
 	const { user } = useContext(UserContext);
 	const { username } = user;
-	//! const username = "testError";
 
 	const handleToggleComment = () => {
 		setIsCommenting((current) => !current);
@@ -31,21 +30,30 @@ const CommentForm = ({
 		setCommentError(false);
 
 		postCommentByArticleId(article_id, username, input)
-			.then(() => {
-				handleToggleComment();
-			})
-			.catch((err) => {
-				setCommentError(true);
-
+			.then(({ comment }) => {
+				const { body, author, votes, created_at, comment_id } = comment;
 				setCommentsData((current) => {
 					const { comments, pages } = current;
 					const copiedComments = [...comments].slice(1);
-
 					return {
-						comments: copiedComments,
+						comments: [
+							{
+								body,
+								author,
+								votes,
+								created_at,
+								article_id,
+								comment_id,
+							},
+							...copiedComments,
+						],
 						pages,
 					};
 				});
+			})
+			.catch((err) => {
+				handleToggleComment();
+				setCommentError(true);
 			});
 
 		setCommentsData((current) => {
@@ -66,7 +74,7 @@ const CommentForm = ({
 			};
 		});
 
-		// handleToggleComment();
+		handleToggleComment();
 	};
 
 	return username ? (
@@ -78,17 +86,20 @@ const CommentForm = ({
 					id="comment-body"
 					placeholder="Write your comment here..."
 					value={input}
+					required
 					onChange={handleInput}
 					onFocus={() => setCommentError(false)}
 				></textarea>
 			</label>
 			{commentError ? (
 				<button className="comment-error">
-					Sorry, something went wrong. Please try again.
+					Sorry, something went wrong.
 				</button>
 			) : input ? (
 				<button>Submit</button>
-			) : null}
+			) : (
+				<button>Submit</button>
+			)}
 		</form>
 	) : (
 		<div className="comment-form">Please log in to post comments.</div>

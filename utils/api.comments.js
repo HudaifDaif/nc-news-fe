@@ -9,10 +9,7 @@ export const getCommentsByArticleId = (article_id, page) => {
 				p: page,
 			},
 		})
-		.then(({ data }) => {
-			const { comments, pages } = data;
-			return { comments, pages };
-		});
+		.then(({ data }) => data);
 };
 
 export const postCommentByArticleId = (article_id, username, body) => {
@@ -22,4 +19,8 @@ export const postCommentByArticleId = (article_id, username, body) => {
 			body,
 		})
 		.then(({ data }) => data);
+};
+
+export const deleteCommentById = (comment_id) => {
+	return axios.delete(`/comments/${comment_id}`).then(({ data }) => data);
 };

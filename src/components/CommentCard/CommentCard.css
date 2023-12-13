@@ -1,10 +1,21 @@
 .comment-contents {
 	text-align: left;
 	min-width: 20vw;
-	box-shadow: inset  0px 0px 10px black;
+	box-shadow: inset 0px 0px 10px black;
 	padding: 20px;
 	border-radius: 0.5rem;
 	margin: 2vw;
 	color: rgb(36, 36, 36);
 	background-color: rgb(227, 227, 227);
+	overflow-anchor: none;
+}
+
+.deleted-comment {
+	pointer-events: none;
+	filter: blur(2.5px);
+}
+
+.comment-error {
+	font-size: 1rem;
+	color: rgb(255, 127, 127);
 }

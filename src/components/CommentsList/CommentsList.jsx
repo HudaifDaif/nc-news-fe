@@ -11,8 +11,7 @@ const CommentsList = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [isCommenting, setIsCommenting] = useState(false);
 	const [commentsData, setCommentsData] = useState({});
-		const [commentError, setCommentError] = useState(false);
-
+	const [commentError, setCommentError] = useState(false);
 
 	const { article_id } = useParams();
 
@@ -49,7 +48,7 @@ const CommentsList = () => {
 						<CommentForm
 							setIsCommenting={setIsCommenting}
 							setCommentsData={setCommentsData}
-								commentError={commentError}
+							commentError={commentError}
 							setCommentError={setCommentError}
 						/>
 					) : null}
@@ -60,6 +59,7 @@ const CommentsList = () => {
 								<CommentCard
 									key={`article-${comment.article_id}.comment_id-${comment.comment_id}`}
 									comment={comment}
+									setCommentsData={setCommentsData}
 								/>
 							);
 						})}
