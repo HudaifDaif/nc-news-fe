@@ -18,10 +18,8 @@ export const getCommentsByArticleId = (article_id, page) => {
 export const postCommentByArticleId = (article_id, username, body) => {
 	return axios
 		.post(`/articles/${article_id}/comments`, {
-			params: {
-				username,
-				body,
-			},
+			username,
+			body,
 		})
 		.then(({ data }) => data);
 };

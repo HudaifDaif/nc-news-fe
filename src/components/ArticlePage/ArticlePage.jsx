@@ -7,7 +7,6 @@ import CommentsList from "../CommentsList/CommentsList";
 
 const ArticlePage = () => {
 	const [isLoading, setIsLoading] = useState(true);
-
 	const [articleContents, setArticleContents] = useState({});
 
 	const { article_id } = useParams();
@@ -26,8 +25,11 @@ const ArticlePage = () => {
 				<h2>Loading...</h2>
 			) : (
 				<>
-					<ArticleBody articleContents={articleContents} />
-					<CommentsList />
+					<ArticleBody
+						articleContents={articleContents}
+					/>
+					<CommentsList
+					/>
 				</>
 			)}
 		</>

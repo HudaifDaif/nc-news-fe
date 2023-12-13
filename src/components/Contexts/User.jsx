@@ -3,6 +3,9 @@ import { createContext, useState } from "react";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+
+	//TODO set to empty object by default after building log in functionality
+
 	const [user, setUser] = useState({
 		username: "grumpy19",
 		name: "Paul Grump",

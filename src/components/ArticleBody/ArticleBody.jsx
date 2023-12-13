@@ -3,10 +3,9 @@ import "./ArticleBody.css";
 import { patchArticleById } from "../../../utils/api.articles";
 import CommentForm from "../CommentForm/CommentForm";
 
-const ArticleBody = ({ articleContents }) => {
+const ArticleBody = ({ articleContents, commentsData }) => {
 	const [userVote, setUserVote] = useState(0);
 	const [voteError, setVoteError] = useState(null);
-	const [isCommenting, setIsCommenting] = useState(false);
 
 	const {
 		title,
@@ -36,10 +35,6 @@ const ArticleBody = ({ articleContents }) => {
 	const handleVoteError = (err) => {
 		setVoteError(err);
 		setUserVote(-opinion);
-	};
-
-	const handleComment = () => {
-		setIsCommenting((current) => !current);
 	};
 
 	return (
@@ -73,10 +68,6 @@ const ArticleBody = ({ articleContents }) => {
 					-
 				</button>
 				<p>Comments: {comment_count}</p>
-				<button onClick={handleComment}>comment</button>
-				{isCommenting ? (
-					<CommentForm setIsCommenting={setIsCommenting} />
-				) : null}
 			</section>
 		</main>
 	);

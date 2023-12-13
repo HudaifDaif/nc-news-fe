@@ -3,17 +3,26 @@ import { scroll } from "../../../utils/window";
 import CommentCard from "../CommentCard/CommentCard";
 import { getCommentsByArticleId } from "../../../utils/api.comments";
 import { useParams } from "react-router-dom";
+import CommentForm from "../CommentForm/CommentForm";
+import "./CommentsList.css";
 
 const CommentsList = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [currentPage, setCurrentPage] = useState(1);
-	const { article_id } = useParams();
-
+	const [isCommenting, setIsCommenting] = useState(false);
 	const [commentsData, setCommentsData] = useState({});
+		const [commentError, setCommentError] = useState(false);
+
+
+	const { article_id } = useParams();
 
 	const handlePageChange = (newPage) => {
 		scroll("#article-comments");
 		setCurrentPage(newPage);
+	};
+
+	const handleComment = () => {
+		setIsCommenting((current) => !current);
 	};
 
 	useEffect(() => {
@@ -32,7 +41,19 @@ const CommentsList = () => {
 			{isLoading ? (
 				<h2>Loading...</h2>
 			) : (
-				<>
+				<section className="comments-list">
+					<button onClick={handleComment}>
+						{isCommenting ? "Close" : "Comment"}
+					</button>
+					{isCommenting ? (
+						<CommentForm
+							setIsCommenting={setIsCommenting}
+							setCommentsData={setCommentsData}
+								commentError={commentError}
+							setCommentError={setCommentError}
+						/>
+					) : null}
+
 					<section id="article-comments">
 						{commentsData.comments.map((comment) => {
 							return (
@@ -66,7 +87,7 @@ const CommentsList = () => {
 							</button>
 						)}
 					</nav>
-				</>
+				</section>
 			)}
 		</>
 	);
