@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { getTopics } from "../../../utils/api.topics";
+import { useNavigate } from "react-router-dom";
 import "./Toolbar.css";
 
-const ToolBar = ({ setArticleQueries }) => {
+const ToolBar = () => {
 	const [hasFilter, setHasFilter] = useState(false);
 	const [topics, setTopics] = useState([]);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		getTopics().then((topics) => {
@@ -16,34 +18,31 @@ const ToolBar = ({ setArticleQueries }) => {
 		setHasFilter((current) => !current);
 	};
 
-	const handleSetQuery = (e, param) => {
+	const handleNavToFilter = (e) => {
 		e.preventDefault();
+		console.log(e.target);
 
-		console.log(e.target.value);
-		setArticleQueries((current) => {
-			const copiedQuery = { ...current };
-			copiedQuery[param] = e.target.value;
-			return copiedQuery;
-		});
+		const topicQuery = e.target.elements.topicFilter.value;
+
+		topicQuery && navigate(`/topics/${topicQuery}`);
 	};
 
 	return (
 		<section className="toolbar">
 			<button onClick={handleFilter}>filter</button>
-			<form>
+			<form onSubmit={handleNavToFilter}>
 				{hasFilter && (
-					<select name="topic-filter" id="topic-filter">
-						<option value="">Select Filter</option>
-						{topics.map((topic) => (
-							<option
-								key={topic.slug}
-								value={topic.slug}
-								onClick={(e) => handleSetQuery(e, "topic")}
-							>
-								{topic.slug}
-							</option>
-						))}
-					</select>
+					<>
+						<select name="topicFilter" id="topicFilter">
+							<option value="">Select Filter</option>
+							{topics.map((topic) => (
+								<option key={topic.slug} value={topic.slug}>
+									{topic.slug}
+								</option>
+							))}
+						</select>
+						<button>Apply</button>
+					</>
 				)}
 			</form>
 		</section>
