@@ -20,10 +20,7 @@ const ToolBar = () => {
 
 	const handleNavToFilter = (e) => {
 		e.preventDefault();
-		console.log(e.target);
-
 		const topicQuery = e.target.elements.topicFilter.value;
-
 		topicQuery && navigate(`/topics/${topicQuery}`);
 	};
 
