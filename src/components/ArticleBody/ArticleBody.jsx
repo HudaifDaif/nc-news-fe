@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./ArticleBody.css";
 import { patchArticleById } from "../../../utils/api.articles";
+import CommentForm from "../CommentForm/CommentForm";
 
-const ArticleBody = ({ articleContents }) => {
+const ArticleBody = ({ articleContents, commentsData }) => {
 	const [userVote, setUserVote] = useState(0);
 	const [voteError, setVoteError] = useState(null);
 
@@ -50,8 +51,6 @@ const ArticleBody = ({ articleContents }) => {
 					<p>Topic: {topic}</p>
 					<p>Author: {author}</p>
 				</article>
-				<p>Comments: {comment_count}</p>
-				<button>comment</button>
 				<p>Votes: {userVote ? votes + userVote : votes}</p>
 				{voteError ? (
 					<p>Sorry, there was a problem. Please try again.</p>
@@ -68,6 +67,7 @@ const ArticleBody = ({ articleContents }) => {
 				>
 					-
 				</button>
+				<p>Comments: {comment_count}</p>
 			</section>
 		</main>
 	);

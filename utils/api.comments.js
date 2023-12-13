@@ -14,3 +14,12 @@ export const getCommentsByArticleId = (article_id, page) => {
 			return { comments, pages };
 		});
 };
+
+export const postCommentByArticleId = (article_id, username, body) => {
+	return axios
+		.post(`/articles/${article_id}/comments`, {
+			username,
+			body,
+		})
+		.then(({ data }) => data);
+};
