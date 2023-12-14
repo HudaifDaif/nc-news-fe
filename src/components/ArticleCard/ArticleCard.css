@@ -1,43 +1,33 @@
 .article-card {
 	width: 80vw;
-
 	max-height: max-content;
 	border-radius: 0.5em;
 	margin: 20px auto;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	padding: 5px
+}
+
+.article-card:hover {
+	scale: 0.98;
+	transition: 0.3s;
 }
 
 .article-card > img {
 	margin: auto 10px;
-	max-width: 90% ;
+	max-width: 90%;
 	max-height: 40svh;
 	border-radius: 0.5rem;
-		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
-
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
 }
 
 .article-card > button {
+	margin: 0 -5px ;
 	padding: 10px;
-	width: 100%;
+	width: calc(100% + 10px);
 	max-height: 40svh;
 	border-radius: 0 0 0.5rem 0.5rem;
 }
 
-/* ! */
-
-.article-image {
-	max-width: 50%;
-	max-height: 50svh;
-	border-radius: 0.5em;
-	margin: 5px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
-}
-
-.article-contents {
-	text-align: left;
-	min-width: 20vw;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-	padding: 10px;
-	border-radius: 0.5rem;
-	overflow: auto;
+.article-card > button:hover {
+	scale: 1;
 }
