@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTopics } from "../../../utils/api.topics";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "./Toolbar.css";
 
 const ToolBar = () => {
@@ -10,10 +10,9 @@ const ToolBar = () => {
 	const [searchParams] = useSearchParams();
 	const [sortQuery, setSortQuery] = useState(searchParams.get("sort_by"));
 	const [orderQuery, setOrderQuery] = useState(searchParams.get("order"));
+	const [topicQuery, setTopicQuery] = useState(searchParams.get("topic"));
 
 	const navigate = useNavigate();
-
-	let { topic } = useParams();
 
 	useEffect(() => {
 		getTopics(searchParams).then((topics) => {
@@ -25,25 +24,15 @@ const ToolBar = () => {
 		setHasToolbar((current) => !current);
 	};
 
-	const handleNavToFilter = (e) => {
-		e.preventDefault();
-		const topicQuery = e.target.value;
-		topicQuery ? navigate(`/topics/${topicQuery}/articles`) : navigate("/");
-	};
-
 	const handleNavToQuery = (e) => {
 		const queryParam = e.target.name;
 		const queryValue = e.target.value;
 
+		queryParam === "topic" && setTopicQuery(topicQuery);
 		queryParam === "sort_by" && setSortQuery(sortQuery);
 		queryParam === "order" && setOrderQuery(orderQuery);
 
 		searchParams.set(queryParam, e.target.value);
-
-		const topicFilter = document.getElementById("topicFilter");
-
-
-		topicFilter.selectedIndex = 0;
 
 		navigate(`/articles/?${searchParams.toString()}`);
 	};
@@ -53,13 +42,9 @@ const ToolBar = () => {
 			<button onClick={toggleToolbar}>Tools</button>
 			{hasToolbar && (
 				<>
-					<select
-						name="topicFilter"
-						id="topicFilter"
-						onChange={handleNavToFilter}
-					>
+					<select name="topic" id="topic" onChange={handleNavToQuery}>
 						<option value="" id="defaultTopic">
-							{topic ? "All Topics" : "Select Topic"}
+							{topicQuery ? "All Topics" : "Select Topic"}
 						</option>
 						{topics.map((topic) => (
 							<option key={topic.slug} value={topic.slug}>
@@ -82,8 +67,8 @@ const ToolBar = () => {
 							id="order"
 							onChange={handleNavToQuery}
 						>
-							<option value="DESC">Descending</option>
-							<option value="ASC">Ascending</option>
+							<option value="desc">Descending</option>
+							<option value="asc">Ascending</option>
 						</select>
 					</div>
 				</>

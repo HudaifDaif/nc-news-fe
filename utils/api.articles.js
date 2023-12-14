@@ -2,9 +2,10 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://newsit-2qbt.onrender.com/api";
 
-export const getArticles = (page, topic, searchParams) => {
+export const getArticles = (page, searchParams) => {
 	const params = { p: page };
 
+	const topic = searchParams.get("topic");
 	const sort_by = searchParams.get("sort_by");
 	const order = searchParams.get("order");
 
