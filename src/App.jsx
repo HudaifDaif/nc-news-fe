@@ -15,8 +15,8 @@ function App() {
 				<Route
 					path="/"
 					element={
+						// TODO replace with a welcome/login page
 						<>
-							// TODO replace with a welcome/login page
 							<ToolBar />
 							<Articles />
 						</>
@@ -43,6 +43,10 @@ function App() {
 				<Route
 					path="/articles/:article_id"
 					element={<ArticlePage />}
+				></Route>
+				<Route
+					path="*"
+					element={<h1>Error territory</h1>}
 				></Route>
 			</Routes>
 		</>
