@@ -21,8 +21,9 @@
 }
 
 .article-card > button {
+	margin: 0 -5px ;
 	padding: 10px;
-	width: 100%;
+	width: calc(100% + 10px);
 	max-height: 40svh;
 	border-radius: 0 0 0.5rem 0.5rem;
 }
