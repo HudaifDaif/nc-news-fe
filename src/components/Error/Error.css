@@ -1,0 +1,10 @@
+.error-box {
+    margin: 50px auto;
+	width: fit-content;
+	padding: 10px;
+	background-color: whitesmoke;
+	color: red;
+	border-radius: 0.5em;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+
+}
