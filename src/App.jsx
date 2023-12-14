@@ -16,13 +16,23 @@ function App() {
 					path="/"
 					element={
 						<>
+							// TODO replace with a welcome/login page
 							<ToolBar />
 							<Articles />
 						</>
 					}
 				></Route>
 				<Route
-					path="/topics/:topic"
+					path="/articles"
+					element={
+						<>
+							<ToolBar />
+							<Articles />
+						</>
+					}
+				></Route>
+				<Route
+					path="/topics/:topic/articles"
 					element={
 						<>
 							<ToolBar />

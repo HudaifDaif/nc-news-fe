@@ -2,14 +2,17 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://newsit-2qbt.onrender.com/api";
 
-export const getArticles = (page, topic) => {
+export const getArticles = (page, topic, searchParams) => {
 	const params = { p: page };
+
+	const sort_by = searchParams.get("sort_by");
+	const order = searchParams.get("order");
+
 	if (topic) params.topic = topic;
-	return axios.get("/articles", { params }).then(({ data }) => {
-		
-		console.log("🚀 ~ file: api.articles.js:12 ~ returnaxios.get ~ data:", data)
-		return data
-	});
+	if (sort_by) params.sort_by = sort_by;
+	if (order) params.order = order;
+
+	return axios.get("/articles", { params }).then(({ data }) => data);
 };
 
 export const getArticleById = (id) => {
