@@ -39,7 +39,7 @@ const ToolBar = () => {
 
 	return (
 		<section className="toolbar">
-			<button onClick={toggleToolbar}>Tools</button>
+			<button onClick={toggleToolbar}>Sort and Filter</button>
 			{hasToolbar && (
 				<>
 					<select name="topic" id="topic" onChange={handleNavToQuery}>
