@@ -32,15 +32,6 @@ function App() {
 					}
 				></Route>
 				<Route
-					path="/topics/:topic/articles"
-					element={
-						<>
-							<ToolBar />
-							<Articles />
-						</>
-					}
-				></Route>
-				<Route
 					path="/articles/:article_id"
 					element={<ArticlePage />}
 				></Route>
