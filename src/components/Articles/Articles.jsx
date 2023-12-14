@@ -1,37 +1,29 @@
 import { useEffect, useState } from "react";
 import ArticleList from "../ArticleList/ArticleList";
 import { getArticles } from "../../../utils/api.articles";
-import { useSearchParams } from "react-router-dom";
-import Error from "../Error/Error";
+import { useParams } from "react-router-dom";
 
 const Articles = () => {
 	const [articlesData, setArticlesData] = useState({});
 	const [isLoading, setIsLoading] = useState(true);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [searchParams] = useSearchParams();
-	const [error, setError] = useState(null);
+	let { topic } = useParams();
 
 	useEffect(() => {
 		setIsLoading(true);
-		setError(null);
-		getArticles(currentPage, searchParams)
+		getArticles(currentPage, topic)
 			.then((data) => {
 				const { articles, pages } = data;
 				setArticlesData({ articles, pages });
 			})
-			.catch(({ response }) => {
-				setError(response.data.msg);
-			})
 			.finally(() => setIsLoading(false));
-	}, [currentPage, searchParams]);
+	}, [currentPage , topic]);
 
 	return (
 		<main>
 			<button>Post an article</button>
 			{isLoading ? (
 				<h2>Loading...</h2>
-			) : error ? (
-				<Error message={error} />
 			) : (
 				<ArticleList
 					articles={articlesData.articles}
