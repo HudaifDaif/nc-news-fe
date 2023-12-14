@@ -13,16 +13,3 @@
 	width: 100%;
 	margin: 5px auto;
 }
-
-.sort-options {
-	display: flex;
-	width: 100%;
-}
-
-.sort-options > * {
-	width: 100%;
-}
-
-.sort-options > p {
-	width: 30%;
-}
