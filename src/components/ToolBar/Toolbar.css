@@ -20,6 +20,9 @@
 }
 
 .sort-options > * {
-	width: 33.33%;
+	width: 100%;
+}
 
+.sort-options > p {
+	width: 30%;
 }

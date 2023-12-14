@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import Articles from "./components/Articles/Articles";
 import ToolBar from "./components/ToolBar/ToolBar";
 import ArticlePage from "./components/ArticlePage/ArticlePage";
+import Error from "./components/Error/Error";
 
 function App() {
 	return (
@@ -32,21 +33,12 @@ function App() {
 					}
 				></Route>
 				<Route
-					path="/topics/:topic/articles"
-					element={
-						<>
-							<ToolBar />
-							<Articles />
-						</>
-					}
-				></Route>
-				<Route
 					path="/articles/:article_id"
 					element={<ArticlePage />}
 				></Route>
 				<Route
 					path="*"
-					element={<h1>Error territory</h1>}
+					element={<Error message="Page not found" />}
 				></Route>
 			</Routes>
 		</>
