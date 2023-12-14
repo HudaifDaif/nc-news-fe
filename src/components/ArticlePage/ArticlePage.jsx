@@ -25,11 +25,8 @@ const ArticlePage = () => {
 				<h2>Loading...</h2>
 			) : (
 				<>
-					<ArticleBody
-						articleContents={articleContents}
-					/>
-					<CommentsList
-					/>
+					<ArticleBody articleContents={articleContents} />
+					<CommentsList />
 				</>
 			)}
 		</>
