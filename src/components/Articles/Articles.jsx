@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+
 import ArticleList from "../ArticleList/ArticleList";
+import Error from "../Error/Error";
 import { getArticles } from "../../../utils/api.articles";
 import { useSearchParams } from "react-router-dom";
-import Error from "../Error/Error";
 
 const Articles = () => {
 	const [articlesData, setArticlesData] = useState({});
@@ -26,8 +27,7 @@ const Articles = () => {
 	}, [currentPage, searchParams]);
 
 	return (
-		<main>
-			<button>Post an article</button>
+		<main >
 			{isLoading ? (
 				<h2>Loading...</h2>
 			) : error ? (

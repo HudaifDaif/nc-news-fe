@@ -1,8 +1,10 @@
-import { useParams } from "react-router-dom";
-import { useContext, useState } from "react";
 import "./CommentForm.css";
+
+import { useContext, useState } from "react";
+
 import { UserContext } from "../Contexts/User";
 import { postCommentByArticleId } from "../../../utils/api.comments";
+import { useParams } from "react-router-dom";
 
 const CommentForm = ({
 	setIsCommenting,
@@ -92,13 +94,13 @@ const CommentForm = ({
 				></textarea>
 			</label>
 			{commentError ? (
-				<button className="comment-error">
+				<button className="button comment-error">
 					Sorry, something went wrong.
 				</button>
 			) : input ? (
-				<button>Submit</button>
+				<button className="button">Submit</button>
 			) : (
-				<button>Submit</button>
+				<button className="button">Please add some comment text.</button>
 			)}
 		</form>
 	) : (

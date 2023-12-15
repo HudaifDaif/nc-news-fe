@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import { scroll } from "../../../utils/window";
-import CommentCard from "../CommentCard/CommentCard";
-import { getCommentsByArticleId } from "../../../utils/api.comments";
-import { useParams } from "react-router-dom";
-import CommentForm from "../CommentForm/CommentForm";
 import "./CommentsList.css";
+
+import { useEffect, useState } from "react";
+
+import CommentCard from "../CommentCard/CommentCard";
+import CommentForm from "../CommentForm/CommentForm";
+import { getCommentsByArticleId } from "../../../utils/api.comments";
+import { scroll } from "../../../utils/window";
+import { useParams } from "react-router-dom";
 
 const CommentsList = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -41,7 +43,7 @@ const CommentsList = () => {
 				<h2>Loading...</h2>
 			) : (
 				<section className="comments-list">
-					<button onClick={handleComment}>
+					<button onClick={handleComment} className="button">
 						{isCommenting ? "Close" : "Comment"}
 					</button>
 					{isCommenting ? (
@@ -73,6 +75,7 @@ const CommentsList = () => {
 								onClick={() =>
 									handlePageChange(currentPage - 1)
 								}
+								className="button"
 							>
 								previous
 							</button>
@@ -82,6 +85,7 @@ const CommentsList = () => {
 								onClick={() =>
 									handlePageChange(currentPage + 1)
 								}
+								className="button"
 							>
 								next
 							</button>

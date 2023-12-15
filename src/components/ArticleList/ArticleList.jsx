@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { scroll } from "../../../utils/window";
 import ArticleCard from "../ArticleCard/ArticleCard";
+import { scroll } from "../../../utils/window";
+import { useEffect } from "react";
 
 const ArticleList = ({ articles, pages, currentPage, setCurrentPage }) => {
 	const handlePageChange = (newPage) => {
@@ -25,12 +25,18 @@ const ArticleList = ({ articles, pages, currentPage, setCurrentPage }) => {
 			</div>
 			<nav>
 				{currentPage > 1 && (
-					<button onClick={() => handlePageChange(currentPage - 1)}>
+					<button
+						onClick={() => handlePageChange(currentPage - 1)}
+						className="button"
+					>
 						previous
 					</button>
 				)}
 				{currentPage < pages && (
-					<button onClick={() => handlePageChange(currentPage + 1)}>
+					<button
+						onClick={() => handlePageChange(currentPage + 1)}
+						className="button"
+					>
 						next
 					</button>
 				)}

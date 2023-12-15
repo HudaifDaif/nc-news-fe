@@ -17,4 +17,5 @@
 
 .pressed-button {
 	background-color: cadetblue;
+	scale: 0.99;
 }
