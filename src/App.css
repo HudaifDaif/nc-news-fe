@@ -1,23 +1,55 @@
 #root {
-	/* max-width: 1280px; */
 	margin: 0 auto;
 	padding: 2rem;
 	text-align: center;
 }
 
-button,
+header + * {
+	margin-top: 64px;
+}
+
+.button,
+.select {
+	background-color: rgb(26, 40, 45);
+	border-radius: 0.5em;
+	padding: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	font-size: large;
+	transition: 0.2s;
+}
+
+.button:hover,
+.select:hover {
+	background-color: rgb(26, 115, 232);
+	scale: 0.99;
+	transition: 0.2s;
+	font-weight: 600;
+	box-shadow: none;
+}
+
+/* button,
 select {
 	background-color: rgb(26, 40, 45);
 	border-radius: 0.5em;
 	padding: 10px;
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 	font-size: large;
+	transition: 0.2s;
 }
 
 button:hover,
 select:hover {
 	background-color: rgb(26, 115, 232);
-	scale: 0.98;
-	transition: 0.3s;
-	font-weight: 700;
+	scale: 0.99;
+	transition: 0.2s;
+	font-weight: 600;
+	box-shadow: none;
+} */
+
+.router-link {
+	text-decoration: none;
+}
+
+.router-link:visited {
+	color: unset;
 }

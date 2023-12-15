@@ -1,7 +1,8 @@
-import { useState } from "react";
 import "./ArticleBody.css";
-import { patchArticleById } from "../../../utils/api.articles";
+
 import CommentForm from "../CommentForm/CommentForm";
+import { patchArticleById } from "../../../utils/api.articles";
+import { useState } from "react";
 
 const ArticleBody = ({ articleContents, commentsData }) => {
 	const [userVote, setUserVote] = useState(0);
@@ -57,13 +58,14 @@ const ArticleBody = ({ articleContents, commentsData }) => {
 				) : null}
 				<button
 					onClick={(e) => handleVote(1, e)}
-					className="vote-button"
+					className="vote-button button"
+
 				>
 					+
 				</button>
 				<button
 					onClick={(e) => handleVote(-1, e)}
-					className="vote-button"
+					className="vote-button button"
 				>
 					-
 				</button>

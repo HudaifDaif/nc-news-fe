@@ -2,23 +2,23 @@ import "./App.css";
 
 import { Route, Routes } from "react-router-dom";
 
-import Header from "./components/Header/Header";
-import Articles from "./components/Articles/Articles";
-import ToolBar from "./components/ToolBar/ToolBar";
 import ArticlePage from "./components/ArticlePage/ArticlePage";
+import Articles from "./components/Articles/Articles";
 import Error from "./components/Error/Error";
+import Header from "./components/Header/Header";
+import ToolBar from "./components/ToolBar/ToolBar";
 
 function App() {
 	return (
 		<>
 			<Header />
+
 			<Routes>
 				<Route
 					path="/"
 					element={
 						// TODO replace with a welcome/login page
 						<>
-							<ToolBar />
 							<Articles />
 						</>
 					}
@@ -27,7 +27,6 @@ function App() {
 					path="/articles"
 					element={
 						<>
-							<ToolBar />
 							<Articles />
 						</>
 					}

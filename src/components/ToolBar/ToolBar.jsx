@@ -1,7 +1,13 @@
-import { useEffect, useState } from "react";
-import { getTopics } from "../../../utils/api.topics";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import "./Toolbar.css";
+
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
+import Button from "@mui/joy/Button";
+import ListItemButton from "@mui/joy/ListItemButton";
+import Option from "@mui/joy/Option";
+import Select from "@mui/joy/Select";
+import { getTopics } from "../../../utils/api.topics";
 
 const ToolBar = () => {
 	const [hasToolbar, setHasToolbar] = useState(false);
@@ -24,52 +30,62 @@ const ToolBar = () => {
 		setHasToolbar((current) => !current);
 	};
 
-	const handleNavToQuery = (e) => {
-		const queryParam = e.target.name;
-		const queryValue = e.target.value;
-
-		queryParam === "topic" && setTopicQuery(topicQuery);
-		queryParam === "sort_by" && setSortQuery(sortQuery);
-		queryParam === "order" && setOrderQuery(orderQuery);
-
-		searchParams.set(queryParam, e.target.value);
+	const handleNavToQuery = (e, queryValue, queryParam) => {
+		queryValue
+			? searchParams.set(queryParam, queryValue)
+			: searchParams.delete(queryParam);
 
 		navigate(`/articles/?${searchParams.toString()}`);
 	};
 
 	return (
-		<section className="toolbar">
-			<button onClick={toggleToolbar}>Sort and Filter</button>
+		<section>
+			<ListItemButton
+				variant="outlined"
+				onClick={toggleToolbar}
+				sx={{
+					margin: "8px",
+					padding: "10px",
+					borderInline: "none",
+				}}
+			>
+				Sort and Filter
+			</ListItemButton>
 			{hasToolbar && (
 				<>
-					<select name="topic" id="topic" onChange={handleNavToQuery}>
-						<option value="" id="defaultTopic">
-							{topicQuery ? "All Topics" : "Select Topic"}
-						</option>
+					<Select
+						onChange={(e, value) =>
+							handleNavToQuery(e, value, "topic")
+						}
+						placeholder="Filter by topic"
+					>
+						<Option value="">All Topics</Option>
 						{topics.map((topic) => (
-							<option key={topic.slug} value={topic.slug}>
+							<Option key={topic.slug} value={topic.slug}>
 								{topic.slug}
-							</option>
+							</Option>
 						))}
-					</select>
+					</Select>
 					<div className="sort-options">
-						<p>Sort By:</p>
-						<select
-							name="sort_by"
-							id="sort_by"
-							onChange={handleNavToQuery}
+						<Select
+							placeholder="Sort By"
+							onChange={(e, value) =>
+								handleNavToQuery(e, value, "sort_by")
+							}
 						>
-							<option value="created_at">Date Created</option>
-							<option value="votes">Popularity</option>
-						</select>
-						<select
+							<Option value="created_at">Date Created</Option>
+							<Option value="votes">Popularity</Option>
+						</Select>
+						<Select
+							placeholder="Order"
 							name="order"
-							id="order"
-							onChange={handleNavToQuery}
+							onChange={(e, value) =>
+								handleNavToQuery(e, value, "order")
+							}
 						>
-							<option value="desc">Descending</option>
-							<option value="asc">Ascending</option>
-						</select>
+							<Option value="desc">Descending</Option>
+							<Option value="asc">Ascending</Option>
+						</Select>
 					</div>
 				</>
 			)}
