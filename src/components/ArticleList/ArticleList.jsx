@@ -1,11 +1,11 @@
 import ArticleCard from "../ArticleCard/ArticleCard";
-import { scroll } from "../../../utils/window";
+import { scroll } from "../../../utils/functions";
 import { useEffect } from "react";
 
 const ArticleList = ({ articles, pages, currentPage, setCurrentPage }) => {
 	const handlePageChange = (newPage) => {
 		setCurrentPage(newPage);
-		scroll("#article-list")
+		scroll("#article-list");
 	};
 
 	return (

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import CommentCard from "../CommentCard/CommentCard";
 import CommentForm from "../CommentForm/CommentForm";
 import { getCommentsByArticleId } from "../../../utils/api.comments";
-import { scroll } from "../../../utils/window";
+import { scroll } from "../../../utils/functions";
 import { useParams } from "react-router-dom";
 
 const CommentsList = () => {

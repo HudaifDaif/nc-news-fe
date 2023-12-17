@@ -6,6 +6,8 @@ import ArticlePage from "./components/ArticlePage/ArticlePage";
 import Articles from "./components/Articles/Articles";
 import Error from "./components/Error/Error";
 import Header from "./components/Header/Header";
+import LoginPage from "./components/LoginPage/LoginPage";
+import RedirectUser from "./components/RedirectUser/RedirectUser";
 import ToolBar from "./components/ToolBar/ToolBar";
 
 function App() {
@@ -17,9 +19,16 @@ function App() {
 				<Route
 					path="/"
 					element={
-						// TODO replace with a welcome/login page
 						<>
-							<Articles />
+							<RedirectUser />
+						</>
+					}
+				></Route>
+				<Route
+					path="/login"
+					element={
+						<>
+							<LoginPage />
 						</>
 					}
 				></Route>

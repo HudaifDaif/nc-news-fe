@@ -6,6 +6,8 @@ import UserAvatar from "../UserAvatar/UserAvatar";
 import splitLogo from "../../assets/logo-split.svg";
 
 const Header = () => {
+
+	
 	return (
 		<header>
 			<Sidebar />

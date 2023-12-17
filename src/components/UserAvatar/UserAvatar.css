@@ -1,5 +1,17 @@
 .user-avatar {
 	aspect-ratio: 1/1;
 	border-radius: 10%;
-    max-height: 3em;
+	max-height: 3em;
+}
+
+.login-avatar {
+	position: fixed;
+	bottom: 16px;
+	right: -16px;
+}
+
+.logout-button {
+	position: fixed;
+	bottom: 16px;
+	left: 16px;
 }

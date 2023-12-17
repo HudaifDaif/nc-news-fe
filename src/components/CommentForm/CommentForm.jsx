@@ -2,7 +2,7 @@ import "./CommentForm.css";
 
 import { useContext, useState } from "react";
 
-import { UserContext } from "../Contexts/User";
+import { UserContext } from "../../Contexts/User";
 import { postCommentByArticleId } from "../../../utils/api.comments";
 import { useParams } from "react-router-dom";
 

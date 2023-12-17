@@ -18,4 +18,8 @@ header > * {
 
 .header-logo {
 	height: 64px;
+	position: fixed;
+	top: 16px;
+	left: 50%;
+	transform: translate(-50%, 0%);
 }
