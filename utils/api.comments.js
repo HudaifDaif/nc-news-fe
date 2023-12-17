@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://newsit-2qbt.onrender.com/api";
+axios.defaults.baseURL = "https://saiddit.onrender.com/api";
 
 export const getCommentsByArticleId = (article_id, page) => {
 	return axios

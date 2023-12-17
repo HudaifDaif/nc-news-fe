@@ -4,7 +4,7 @@ Currently hosted at: https://saiddit.netlify.app/
 
 ## Summary
 
-This project aims to mimic a frontend web service similar to Reddit ( a network where articles can receive both positive and negative votes). The data is fetched from the backend API (the code for this can be found at: https://github.com/HudaifDaif/nc-news) and all the rendering is done on the client side.
+This project aims to mimic a frontend web service similar to Reddit ( a network where articles can receive both positive and negative votes). The data is fetched from the backend API (the code for this can be found at: https://github.com/HudaifDaif/saiddit-backend) and all the rendering is done on the client side.
 
 ## Using the app
 
@@ -16,9 +16,9 @@ The main page of this app displays articles, which can be filtered and sorted. C
 
 Run the following command in your terminal to clone the repository in the current directory: 
 
-```git clone https://github.com/HudaifDaif/nc-news-fe.git```
+```git clone https://github.com/HudaifDaif/saiddit-frontend.git```
 
-Navigate into this directory be running ```cd nc-news-fe```
+Navigate into this directory be running ```cd saiddit-frontend```
 
 ### Installing dependencies
 
@@ -38,4 +38,5 @@ Following this, you will be prompted with the local address you can access the a
     ➜  press h + enter to show help
 
 ## Minimum requirements
+
 - Node - v20.10.0
