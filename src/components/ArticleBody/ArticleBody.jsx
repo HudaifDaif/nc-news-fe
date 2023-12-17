@@ -1,12 +1,14 @@
 import "./ArticleBody.css";
 
-import CommentForm from "../CommentForm/CommentForm";
+import { UserContext } from "../../Contexts/User";
 import { patchArticleById } from "../../../utils/api.articles";
+import { useContext } from "react";
 import { useState } from "react";
 
 const ArticleBody = ({ articleContents, commentsData }) => {
 	const [userVote, setUserVote] = useState(0);
 	const [voteError, setVoteError] = useState(null);
+	const { user } = useContext(UserContext);
 
 	const {
 		title,
@@ -56,19 +58,22 @@ const ArticleBody = ({ articleContents, commentsData }) => {
 				{voteError ? (
 					<p>Sorry, there was a problem. Please try again.</p>
 				) : null}
-				<button
-					onClick={(e) => handleVote(1, e)}
-					className="vote-button button"
-
-				>
-					+
-				</button>
-				<button
-					onClick={(e) => handleVote(-1, e)}
-					className="vote-button button"
-				>
-					-
-				</button>
+				{user.username && (
+					<>
+						<button
+							onClick={(e) => handleVote(1, e)}
+							className="vote-button button"
+						>
+							+
+						</button>
+						<button
+							onClick={(e) => handleVote(-1, e)}
+							className="vote-button button"
+						>
+							-
+						</button>
+					</>
+				)}
 				<p>Comments: {comment_count}</p>
 			</section>
 		</main>

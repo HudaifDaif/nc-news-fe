@@ -3,7 +3,6 @@ import "./Toolbar.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import Button from "@mui/joy/Button";
 import ListItemButton from "@mui/joy/ListItemButton";
 import Option from "@mui/joy/Option";
 import Select from "@mui/joy/Select";
@@ -12,12 +11,7 @@ import { getTopics } from "../../../utils/api.topics";
 const ToolBar = () => {
 	const [hasToolbar, setHasToolbar] = useState(false);
 	const [topics, setTopics] = useState([]);
-
 	const [searchParams] = useSearchParams();
-	const [sortQuery, setSortQuery] = useState(searchParams.get("sort_by"));
-	const [orderQuery, setOrderQuery] = useState(searchParams.get("order"));
-	const [topicQuery, setTopicQuery] = useState(searchParams.get("topic"));
-
 	const navigate = useNavigate();
 
 	useEffect(() => {

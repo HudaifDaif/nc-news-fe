@@ -1,8 +1,8 @@
 import "./CommentCard.css";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
-import { UserContext } from "../Contexts/User";
+import { UserContext } from "../../Contexts/User";
 import { deleteCommentById } from "../../../utils/api.comments";
 
 const CommentCard = ({ comment, setCommentsData }) => {
@@ -55,8 +55,13 @@ const CommentCard = ({ comment, setCommentsData }) => {
 				</>
 			)}
 			<p>Votes: {votes}</p>
-			<button className="button">+</button>
-			<button className="button">-</button>
+
+			{username && (
+				<>
+					<button className="button">+</button>
+					<button className="button">-</button>
+				</>
+			)}
 		</article>
 	);
 };
