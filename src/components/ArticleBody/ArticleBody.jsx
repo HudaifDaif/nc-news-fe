@@ -9,7 +9,7 @@ const ArticleBody = ({ articleContents, commentsData }) => {
 	const [userVote, setUserVote] = useState(0);
 	const [voteError, setVoteError] = useState(null);
 	const { user } = useContext(UserContext);
-
+	
 	const {
 		title,
 		article_img_url,
@@ -20,7 +20,7 @@ const ArticleBody = ({ articleContents, commentsData }) => {
 		votes,
 		article_id,
 	} = articleContents;
-
+	
 	const handleVote = (opinion, e) => {
 		const { parentElement } = e.target;
 		const voteButtons = parentElement.querySelectorAll(".vote-button");
@@ -29,15 +29,20 @@ const ArticleBody = ({ articleContents, commentsData }) => {
 			voteButtons.forEach((button) => {
 				button.classList.remove("pressed-button");
 			});
-			patchArticleById(article_id, opinion).catch(handleVoteError);
-			setUserVote(opinion);
-			e.target.classList.add("pressed-button");
+			patchArticleById(article_id, opinion, user.username)
+				.then(() => {
+					setUserVote(opinion);
+					e.target.classList.add("pressed-button");
+				})
+				.catch(handleVoteError);
 		}
 	};
 
 	const handleVoteError = (err) => {
 		setVoteError(err);
-		setUserVote(-opinion);
+		setTimeout(() => {
+			setVoteError(null);
+		}, 3000);
 	};
 
 	return (
@@ -54,10 +59,8 @@ const ArticleBody = ({ articleContents, commentsData }) => {
 					<p>Topic: {topic}</p>
 					<p>Author: {author}</p>
 				</article>
+				<p>Comments: {comment_count}</p>
 				<p>Votes: {userVote ? votes + userVote : votes}</p>
-				{voteError ? (
-					<p>Sorry, there was a problem. Please try again.</p>
-				) : null}
 				{user.username && (
 					<>
 						<button
@@ -74,7 +77,9 @@ const ArticleBody = ({ articleContents, commentsData }) => {
 						</button>
 					</>
 				)}
-				<p>Comments: {comment_count}</p>
+				{voteError ? (
+					<p>Sorry, there was a problem. Please try again.</p>
+				) : null}
 			</section>
 		</main>
 	);

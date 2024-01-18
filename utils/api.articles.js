@@ -20,10 +20,10 @@ export const getArticleById = (id) => {
 	return axios.get(`/articles/${id}`).then(({ data }) => data);
 };
 
-export const patchArticleById = (id, opinion) => {
+export const patchArticleById = (id, opinion, username) => {
 	return axios
 		.patch(`/articles/${id}`, {
-			inc_votes: opinion,
+			inc_votes: opinion, username
 		})
 		.then(({ data }) => data);
 };
