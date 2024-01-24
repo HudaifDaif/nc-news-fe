@@ -2,6 +2,7 @@
 	aspect-ratio: 1/1;
 	border-radius: 10%;
 	max-height: 3em;
+	margin:5px
 }
 
 .login-avatar {
@@ -14,4 +15,8 @@
 	position: fixed;
 	bottom: 16px;
 	left: 16px;
+}
+
+.username { 
+	text-align: right;
 }
