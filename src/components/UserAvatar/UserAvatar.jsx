@@ -24,7 +24,7 @@ const UserAvatar = () => {
 	return username ? (
 		<div>
 			<img src={avatar_url} alt="user avatar" className="user-avatar" />
-			<Typography level="body-xs" color="primary.50">
+			<Typography level="body-xs" color="primary.50" className="username">
 				{username}
 			</Typography>
 		</div>
