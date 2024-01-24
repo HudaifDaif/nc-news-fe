@@ -16,6 +16,7 @@ const ArticleBody = ({ articleContents }) => {
 		votes,
 		article_id,
 		userVotes,
+		created_at
 	} = articleContents;
 
 	const [userVote, setUserVote] = useState(0);
@@ -28,7 +29,6 @@ const ArticleBody = ({ articleContents }) => {
 			(vote) => vote.username === user.username
 		);
 		storedUserVote && setUserVote(storedUserVote.vote_value);
-		storedUserVote && setDisplayedVotes(storedUserVote.vote_value);
 	}, [user]);
 
 	const handleVote = (opinion) => {
@@ -70,6 +70,7 @@ const ArticleBody = ({ articleContents }) => {
 					/>
 					<p>{body}</p>
 					<p>Topic: {topic}</p>
+					<p>Posted: {Date(created_at).slice(0, 21)}</p>
 					<p>Author: {author}</p>
 				</article>
 				<p>Comments: {comment_count}</p>
